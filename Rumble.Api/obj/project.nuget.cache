@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "YgH7m02s+fA=",
+  "success": true,
+  "projectFilePath": "D:\\git\\Rumble\\Rumble.Api\\Rumble.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.2\\microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
