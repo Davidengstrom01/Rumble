@@ -6,15 +6,29 @@ const Navbar: React.FC = () => {
     const { token, logout } = useAuth();
 
     return (
-        <nav>
-            <Link to="/">Home</Link> | <Link to="/recipes">Recipes</Link> | <Link to="/friends">Friends</Link> | <Link to="/swipe">Swipe</Link>
-            {token ? (
-                <button onClick={logout}>Logout</button>
-            ) : (
-                <>
-                    | <Link to="/login">Login</Link> | <Link to="/register">Register</Link>
-                </>
-            )}
+        <nav className="navbar">
+            <div className="navbar-content">
+                <Link to="/">Home</Link>
+                <span> | </span>
+                <Link to="/recipes">Recipes</Link>
+                <span> | </span>
+                <Link to="/friends">Friends</Link>
+                <span> | </span>
+                <Link to="/swipe">Swipe</Link>
+                {token ? (
+                    <>
+                        <span> | </span>
+                        <button onClick={logout}>Logout</button>
+                    </>
+                ) : (
+                    <>
+                        <span> | </span>
+                        <Link to="/login">Login</Link>
+                        <span> | </span>
+                        <Link to="/register">Register</Link>
+                    </>
+                )}
+            </div>
         </nav>
     );
 };

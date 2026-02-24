@@ -71,5 +71,37 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Redirect root URL to Swagger UI
+app.MapGet("/", context => {
+    context.Response.Redirect("/swagger");
+    return Task.CompletedTask;
+});
+
+// Seed example data
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+
+    // Ensure database is created
+    context.Database.EnsureCreated();
+
+    // Check if we already have users
+    if (!context.Users.Any())
+    {
+        // Create admin user
+        var admin = new AppUser
+        {
+            UserName = "admin",
+            Email = "admin"
+        };
+
+        await userManager.CreateAsync(admin, "admin");
+
+        Console.WriteLine("Admin user created:");
+        Console.WriteLine("  Email: admin, Password: admin");
+    }
+}
+
 app.Run();
 

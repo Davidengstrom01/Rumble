@@ -1,3 +1,42 @@
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  background: #232526;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  transition: color 0.2s;
+}
+.navbar a:hover {
+  color: #646cff;
+}
+.navbar button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0 0.5rem;
+  transition: color 0.2s;
+}
+.navbar button:hover {
+  color: #ff4d4f;
+}
 /* Login Page Styles */
 .login-page-bg {
   min-height: 100vh;
@@ -82,6 +121,12 @@
 
 .login-error {
   color: #ff4d4f;
+  margin-top: 0.7rem;
+  font-size: 0.98rem;
+  text-align: center;
+}
+.login-success {
+  color: #52c41a;
   margin-top: 0.7rem;
   font-size: 0.98rem;
   text-align: center;

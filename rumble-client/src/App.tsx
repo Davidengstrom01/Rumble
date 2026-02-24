@@ -4,6 +4,7 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
 import { useAuth } from './context/AuthContext';
+import './App.css';
 
 // A simple component to protect routes
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
