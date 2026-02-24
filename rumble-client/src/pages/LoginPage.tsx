@@ -22,20 +22,38 @@ const LoginPage: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                </div>
-                <button type="submit">Login</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
+        <div className="login-page-bg">
+            <div className="login-card">
+                <h2 className="login-title">Login</h2>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="login-field">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                            className="login-input"
+                            autoComplete="username"
+                        />
+                    </div>
+                    <div className="login-field">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                            className="login-input"
+                            autoComplete="current-password"
+                        />
+                    </div>
+                    <button type="submit" className="login-btn">Login</button>
+                    {error && <p className="login-error">{error}</p>}
+                </form>
+            </div>
         </div>
     );
 };
