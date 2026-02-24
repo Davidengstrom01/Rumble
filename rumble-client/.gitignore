@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 
-../Rumble.Api/bin/
-../Rumble.Api/obj/
+
