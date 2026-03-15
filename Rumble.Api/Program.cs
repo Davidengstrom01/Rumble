@@ -21,6 +21,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityCore<AppUser>(opt => 
 {
     opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireUppercase = false;
+    opt.Password.RequiredLength = 4;
     opt.User.RequireUniqueEmail = true;
 })
     .AddEntityFrameworkStores<DataContext>()
@@ -38,19 +42,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,
         };
     });
-
-
-builder.Services.AddScoped<TokenService>();
-
-
 // Add CORS policy
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", policy =>
     {
-        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173");
+        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
+
+builder.Services.AddScoped<TokenService>();
 
 
 var app = builder.Build();
@@ -62,9 +63,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.UseCors("CorsPolicy");
+
+// app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -93,13 +94,24 @@ using (var scope = app.Services.CreateScope())
         var admin = new AppUser
         {
             UserName = "admin",
-            Email = "admin"
+            Email = "admin@local.com"
         };
 
-        await userManager.CreateAsync(admin, "admin");
+        var result = await userManager.CreateAsync(admin, "admin");
 
-        Console.WriteLine("Admin user created:");
-        Console.WriteLine("  Email: admin, Password: admin");
+        if (result.Succeeded)
+        {
+            Console.WriteLine("Admin user created:");
+            Console.WriteLine("  Email: admin@local.com, Password: admin");
+        }
+        else
+        {
+            Console.WriteLine("Failed to create admin user:");
+            foreach (var error in result.Errors)
+            {
+                Console.WriteLine($"  {error.Code}: {error.Description}");
+            }
+        }
     }
 }
 

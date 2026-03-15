@@ -1,12 +1,56 @@
-Rumble.Api/bin/
-Rumble.Api/obj/
-Rumble.Api/obj/Rumble.Api.csproj.nuget.g.targets
-Rumble.Api/obj/Rumble.Api.csproj.nuget.g.props
-Rumble.Api/obj/Rumble.Api.csproj.nuget.dgspec.json
-Rumble.Api/obj/project.nuget.cache
-Rumble.Api/obj/project.assets.json
-Rumble.Api/obj/project.nuget.cache
-Rumble.Api/obj/project.assets.json
-Rumble.Api/obj/Rumble.Api.csproj.nuget.dgspec.json
-Rumble.Api/obj/Rumble.Api.csproj.nuget.g.props
-Rumble.Api/obj/Rumble.Api.csproj.nuget.g.targets
+# ========================
+# .NET / ASP.NET Core
+# ========================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+project.lock.json
+artifacts/
+publish/
+**/publish/
+
+# Secrets & local config
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# ========================
+# Node / React / Vite
+# ========================
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.env.*
+!.env.example
+.vite/
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ========================
+# Logs
+# ========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================
+# Test results
+# ========================
+TestResults/
+coverage/
+*.coveragexml
